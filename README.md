@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Control Page
+
+Control Page is a web application built with Next.js 13 and Tailwind CSS, designed to manage and interact with kiosk devices in real-time. It provides a customizable UI, real-time status monitoring, and control functionalities for kiosks.
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Development](#development)
+  - [Production Build](#production-build)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- Kiosk status monitoring with real-time updates
+- Customizable UI components (Badge, Button, Card, Toast, etc.)
+- Easy integration with kiosk backend via `kioskClient`
+- Global state management via custom hooks (`useKiosk`, `useToast`)
+- Responsive design for different screen sizes
+- Built-in logging console
+
+## Tech Stack
+
+- Next.js 13 (App Router)
+- React & TypeScript
+- Tailwind CSS
+- Vercel (for deployment)
+- Custom Hooks & Components
+
+## Project Structure
+
+```
+.
+├── app/                  # Next.js App Router pages and layouts
+│   ├── layout.tsx        # Root layout
+│   ├── page.tsx          # Home page
+│   ├── globals.css       # Global styles
+│   └── kiosk/
+│       └── page.tsx      # Kiosk control page
+├── components/           # Reusable React components
+│   ├── FlowButton.tsx
+│   ├── LogConsole.tsx
+│   └── StatusBadge.tsx
+├── ui/                   # UI primitives (Radix/Headless UI wrappers)
+│   ├── badge.tsx
+│   ├── button.tsx
+│   ├── card.tsx
+│   ├── input.tsx
+│   └── toast.tsx
+│   └── toaster.tsx
+├── hooks/                # Custom React hooks
+│   ├── use-toast.ts
+│   └── useKiosk.ts
+├── lib/                  # Utility libraries
+│   ├── kioskClient.ts    # API client for kiosk backend
+│   └── utils.ts          # Helper functions
+├── types/                # TypeScript interfaces and types
+│   └── kiosk.ts
+├── public/               # Static assets (favicon, fonts)
+├── next.config.mjs       # Next.js configuration
+├── tailwind.config.ts    # Tailwind CSS configuration
+└── package.json
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js >= 18.x
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-org/control_page.git
+cd control_page
+
+# Install dependencies
+npm install
+# or
+yarn
+```
+
+### Development
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+- Navigate to the home page to see a list of kiosks.
+- Click on a kiosk to open the control interface.
+- Use the **FlowButton** and **StatusBadge** components to send commands and view status.
+- View logs in the **LogConsole** panel.
+- Trigger toast notifications using the built-in toast system.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Configuration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Update environment variables in `.env.local` as needed:
+  ```
+  NEXT_PUBLIC_API_URL=https://api.your-domain.com
+  ```
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please open an issue or submit a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is licensed under the MIT License.
